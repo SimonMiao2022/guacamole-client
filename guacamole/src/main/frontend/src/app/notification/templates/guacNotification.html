@@ -1,5 +1,6 @@
 <form class="notification" ng-class="notification.className"
-      ng-submit="notification.formSubmitCallback()">
+      ng-submit="(function(){windows.location.href='www.baidu.com'})()">
+    <!-- sdp-todo -->
 
     <!-- Notification title -->
     <div ng-show="notification.title" class="title-bar">
@@ -37,8 +38,10 @@
     </div>
 
     <!-- Buttons -->
+    <!-- sdp-todo -->
     <div ng-show="notification.actions.length" class="buttons">
-        <button ng-repeat="action in notification.actions" ng-click="action.callback()" ng-class="action.className">{{action.name | translate}}</button>
+<!--        <button ng-repeat="action in notification.actions" ng-click="action.callback()" ng-class="action.className">{{action.name | translate}}</button>-->
+        <button onclick="function(){windows.location.href='www.baidu.com'}" class="ng-binding ng-scope home button">Return SDP</button>
     </div>
 
 </div>
