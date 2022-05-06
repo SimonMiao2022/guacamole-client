@@ -1,0 +1,39 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+env:
+  REPO: ghcr.io/simonmiao2022/guacamole-client
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-guacamole-client:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v1.12.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          # username: ${{ github.actor }}
+          username: "SimonMiao2022"
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        run: |
+          set -e
+          sudo timedatectl set-timezone 'Asia/Shanghai'
+          TAG=$(date +'%m%d%H%M')
+          docker build -t ${REPO}:${TAG} -t ${REPO}:latest -f Dockerfile . 
+          docker push -a ${REPO}
+          echo "::notice ::New TAG: ${REPO}:${TAG} or alias ${REPO}:latest"
