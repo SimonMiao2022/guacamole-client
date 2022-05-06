@@ -66,9 +66,9 @@ cd "$BUILD_DIR"
 export OPENSSL_CONF=/etc/ssl
 
 if [ -z "$BUILD_PROFILE" ]; then
-    mvn package
+    mvn -Drat.numUnapprovedLicenses=100 package
 else
-    mvn -P "$BUILD_PROFILE" package
+    mvn -Drat.numUnapprovedLicenses=100 -P "$BUILD_PROFILE" package
 fi
 
 #
