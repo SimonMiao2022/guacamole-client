@@ -56,11 +56,23 @@
 
         <!-- Absolute fatal error -->
         <div class="fatal-page-error-modal" ng-switch-when="fatalError">
+            <script type="text/javascript">
+                var t = 5;
+                setInterval("refer()", 1000);
+                function refer() {
+                    if (t == 0){
+                        location = "https://dev-spd-cluster.splashshield.ai/applications/application";
+                    }
+                    document.getElementById('show').innerHTML = "After" + t + "seconds redirect to sdp.";
+                    t--;
+                }
+            </script>
             <guac-modal>
                 <div class="fatal-page-error">
                     <h1 translate="APP.DIALOG_HEADER_ERROR"></h1>
                     <p translate="APP.ERROR_PAGE_UNAVAILABLE"></p>
                 </div>
+                <span id="show"></span>
             </guac-modal>
         </div>
 
