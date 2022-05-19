@@ -39,11 +39,8 @@
     <!-- Buttons -->
     <div ng-show="notification.actions.length" class="buttons">
         <button ng-repeat="action in notification.actions" ng-click="action.callback()" ng-class="action.className" ng-if="action.name == 'CLIENT.ACTION_CONTINUE' || action.name == 'CLIENT.ACTION_ACKNOWLEDGE' ">{{action.name | translate}}</button>
-        <button ng-if="!( Boolean(notification.actions.find(item => item.name === 'CLIENT.ACTION_CONTINUE')) || Boolean(notification.actions.find(item => item.name === 'CLIENT.ACTION_ACKNOWLEDGE')))" onclick="(function(){window.location.href='https://dev-spd-cluster.splashshield.ai/applications/application'})()" class="ng-binding ng-scope home button">Return SDP</button>
-
-
-        <!--        <button ng-repeat="action in notification.actions" ng-click="action.callback()" ng-class="action.className" ng-if="action.name == 'ACTION_CONTINUE' || action.name == 'ACTION_ACKNOWLEDGE' ">{{action.name | translate}}</button>-->
-<!--        <button ng-if="notification.actions.indexOf('ACTION_CONTINUE') == -1 && notification.actions.indexOf('ACTION_ACKNOWLEDGE') == -1" onclick="(function(){window.location.href='https://dev-spd-cluster.splashshield.ai/applications/application'})()" class="ng-binding ng-scope home button">Return SDP</button>-->
+<!--        <button ng-if="!( Boolean(notification.actions.find(item => item.name === 'CLIENT.ACTION_CONTINUE')) || Boolean(notification.actions.find(item => item.name === 'CLIENT.ACTION_ACKNOWLEDGE')))" onclick="(function(){window.location.href='https://dev-spd-cluster.splashshield.ai/applications/application'})()" class="ng-binding ng-scope home button">Return SDP</button>-->
+        <button onclick="(function(){window.location.href='https://dev-spd-cluster.splashshield.ai/applications/application'})()" class="ng-binding ng-scope home button">Return SDP</button>
     </div>
 
 </div>
